@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PhysioFix Recovery Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#05cccc",
+            "background-light": "#f5f8f8",
+            "background-dark": "#0f2323",
+          },
+          fontFamily: {
+            "display": ["Inter", "Noto Sans", "sans-serif"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white">
+<div class="flex h-screen w-full flex-row overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="flex h-full w-64 flex-col border-r border-[#e5e7eb] dark:border-[#214a4a] bg-white dark:bg-[#102323] transition-all">
+<div class="flex h-16 items-center px-6 border-b border-[#e5e7eb] dark:border-[#214a4a]">
+<div class="flex items-center gap-2 text-[#05cccc]">
+<span class="material-symbols-outlined text-3xl">monitor_heart</span>
+<h2 class="text-xl font-bold tracking-tight text-[#111418] dark:text-white">PhysioFix</h2>
+</div>
+</div>
+<div class="flex flex-col justify-between h-full p-4 overflow-y-auto">
+<div class="flex flex-col gap-2">
+<!-- User Info Small -->
+<div class="flex items-center gap-3 p-2 mb-4 rounded-lg bg-[#f0f9f9] dark:bg-[#183535]">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 shrink-0" data-alt="User profile picture of a smiling man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC-vl-xoeESoX9cs_gM4uiGZ1MdfdluLKpEMt3s-WTpMUV-CzyRl-wGjfz0Urv4iyMtulDeNjoIEG2NLaRirUOsoo-lY-xIHsvnDrvfgYDlE6oPD468CcZxH7VwrSqz_fMLLIxtc3bJvSD9IxexfbcC6weUccnH0TuwAKSh9iTDc6r3psy2UKEaGt8QwJa3b-79QvwTL59A_0YrKb9lZmIpxBXUMYXTeZZCwrargDng9pIBeADcHxxcWep9TBv2cXCjBOfoaKfLng6o");'></div>
+<div class="flex flex-col overflow-hidden">
+<h1 class="text-[#111418] dark:text-white text-sm font-bold truncate">Alex Morgan</h1>
+<p class="text-[#637588] dark:text-[#8ecccc] text-xs truncate">Recovery in progress</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary dark:bg-[#214a4a] dark:text-white group" href="#">
+<span class="material-symbols-outlined filled">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#637588] hover:bg-[#f0f9f9] hover:text-[#111418] dark:text-[#9ca3af] dark:hover:bg-[#183535] dark:hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined">format_list_bulleted</span>
+<span class="text-sm font-medium">My Programs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#637588] hover:bg-[#f0f9f9] hover:text-[#111418] dark:text-[#9ca3af] dark:hover:bg-[#183535] dark:hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined">ssid_chart</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#637588] hover:bg-[#f0f9f9] hover:text-[#111418] dark:text-[#9ca3af] dark:hover:bg-[#183535] dark:hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined">stethoscope</span>
+<span class="text-sm font-medium">Tele-Doctor</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#637588] hover:bg-[#f0f9f9] hover:text-[#111418] dark:text-[#9ca3af] dark:hover:bg-[#183535] dark:hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Action -->
+<div class="mt-auto pt-4 border-t border-[#e5e7eb] dark:border-[#214a4a]">
+<button class="flex w-full items-center gap-3 px-3 py-2.5 rounded-lg text-[#637588] hover:bg-[#f0f9f9] hover:text-[#111418] dark:text-[#9ca3af] dark:hover:bg-[#183535] dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm font-medium">Log Out</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- Top Header -->
+<header class="h-16 flex items-center justify-between px-8 border-b border-[#e5e7eb] dark:border-[#214a4a] bg-white dark:bg-[#102323] shrink-0 z-10">
+<div class="flex flex-col">
+<h1 class="text-xl font-bold text-[#111418] dark:text-white">Good Morning, Alex</h1>
+<p class="text-xs text-[#637588] dark:text-[#8ecccc]">Let's get back on track.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-[#f0f9f9] dark:hover:bg-[#214a4a] text-[#637588] dark:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border border-white dark:border-[#102323]"></span>
+</div>
+<div class="h-8 w-[1px] bg-[#e5e7eb] dark:bg-[#214a4a]"></div>
+<button class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8" data-alt="User profile thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDxguTtHTv9y12ODOkxNzrOay84SkTNFaSQqnbCzzdpsGojirLJkfMu3mtSTrnvkmnNd9CM17Eogfyy_AQb384-Tmu4kaoB_-y_KhRzla1i2-XDNAu-CNOqyBZmqGnPdoT2YWLGEx571XugSFEXqHWYP-hQRQ-q1qJzewbrABw1uZM_1xeCXHLRUzOJK3lfxbpR1H9mk6OjreElcIs5YLDgG6h0Fd9AvXqmpLeintV2MWF9CZVlyUwMFNSiYyz0-_c7HWpuOVxUwxHz");'></div>
+<span class="material-symbols-outlined text-[#637588] dark:text-[#8ecccc]">expand_more</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-6 md:p-8 bg-[#f8fafc] dark:bg-[#0f1d1d]">
+<div class="max-w-7xl mx-auto space-y-6">
+<!-- Stats Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Widget 1: Daily Streak -->
+<div class="bg-white dark:bg-[#183535] rounded-xl p-6 shadow-sm border border-[#e5e7eb] dark:border-[#214a4a] flex flex-col justify-between h-48 relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-10 rotate-12 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-9xl text-primary">local_fire_department</span>
+</div>
+<div>
+<div class="flex justify-between items-start mb-2">
+<p class="text-[#637588] dark:text-[#8ecccc] text-sm font-semibold uppercase tracking-wider">Daily Streak</p>
+<span class="bg-[#dcfce7] text-[#166534] dark:bg-[#064e3b] dark:text-[#4ade80] text-xs font-bold px-2 py-1 rounded-full">+1 Day</span>
+</div>
+<h3 class="text-4xl font-bold text-[#111418] dark:text-white mt-1">5 Days</h3>
+</div>
+<div class="relative z-10 mt-auto">
+<p class="text-sm text-[#637588] dark:text-[#cbd5e1] mb-2">You're on fire! Keep it up to reach your weekly goal.</p>
+<div class="w-full bg-[#f1f5f9] dark:bg-[#0f2323] h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full w-[71%]"></div>
+</div>
+</div>
+</div>
+<!-- Widget 2: Recovery Score -->
+<div class="bg-white dark:bg-[#183535] rounded-xl p-6 shadow-sm border border-[#e5e7eb] dark:border-[#214a4a] flex flex-col justify-between h-48">
+<div class="flex justify-between items-start mb-2">
+<p class="text-[#637588] dark:text-[#8ecccc] text-sm font-semibold uppercase tracking-wider">Recovery Score</p>
+<span class="material-symbols-outlined text-primary">trending_up</span>
+</div>
+<div class="flex items-end gap-2">
+<h3 class="text-4xl font-bold text-[#111418] dark:text-white">82%</h3>
+<span class="text-sm text-[#637588] dark:text-[#8ecccc] mb-1.5 font-medium">Excellent</span>
+</div>
+<div class="mt-auto grid grid-cols-7 gap-1 h-12 items-end">
+<div class="bg-primary/20 hover:bg-primary/40 transition-colors rounded-sm h-[40%]"></div>
+<div class="bg-primary/20 hover:bg-primary/40 transition-colors rounded-sm h-[60%]"></div>
+<div class="bg-primary/20 hover:bg-primary/40 transition-colors rounded-sm h-[50%]"></div>
+<div class="bg-primary/20 hover:bg-primary/40 transition-colors rounded-sm h-[75%]"></div>
+<div class="bg-primary/20 hover:bg-primary/40 transition-colors rounded-sm h-[65%]"></div>
+<div class="bg-primary/20 hover:bg-primary/40 transition-colors rounded-sm h-[85%]"></div>
+<div class="bg-primary hover:bg-primary/80 transition-colors rounded-sm h-[82%]"></div>
+</div>
+</div>
+<!-- Widget 3: Pain Level -->
+<div class="bg-white dark:bg-[#183535] rounded-xl p-6 shadow-sm border border-[#e5e7eb] dark:border-[#214a4a] flex flex-col justify-between h-48">
+<div class="flex justify-between items-start mb-2">
+<p class="text-[#637588] dark:text-[#8ecccc] text-sm font-semibold uppercase tracking-wider">Pain Level</p>
+<span class="material-symbols-outlined text-[#facc15]">sentiment_satisfied</span>
+</div>
+<h3 class="text-4xl font-bold text-[#111418] dark:text-white mt-1">2<span class="text-xl text-[#637588] dark:text-[#8ecccc] font-medium">/10</span></h3>
+<div class="mt-auto">
+<p class="text-sm text-[#637588] dark:text-[#cbd5e1] mb-3">Significant improvement from last week (6/10).</p>
+<button class="text-primary text-sm font-bold hover:underline">Log today's symptoms</button>
+</div>
+</div>
+</div>
+<!-- Main Grid: Body Map & Programs -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-[500px]">
+<!-- Body Map Widget -->
+<div class="lg:col-span-2 bg-white dark:bg-[#183535] rounded-xl shadow-sm border border-[#e5e7eb] dark:border-[#214a4a] overflow-hidden flex flex-col">
+<div class="p-6 border-b border-[#e5e7eb] dark:border-[#214a4a] flex justify-between items-center">
+<h3 class="text-lg font-bold text-[#111418] dark:text-white">Body Status Map</h3>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 text-xs font-medium rounded-lg bg-[#f0f9f9] text-[#111418] hover:bg-[#e2e8f0] dark:bg-[#214a4a] dark:text-white dark:hover:bg-[#2a5e5e] transition-colors">Front</button>
+<button class="px-3 py-1.5 text-xs font-medium rounded-lg text-[#637588] hover:bg-[#f0f9f9] dark:text-[#8ecccc] dark:hover:bg-[#214a4a] transition-colors">Back</button>
+<button class="px-3 py-1.5 text-xs font-medium rounded-lg text-[#637588] hover:bg-[#f0f9f9] dark:text-[#8ecccc] dark:hover:bg-[#214a4a] transition-colors">Muscles</button>
+</div>
+</div>
+<div class="relative flex-1 bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0] dark:from-[#102323] dark:to-[#0b1818] flex items-center justify-center p-4">
+<!-- Interactive Body Visualization Placeholder -->
+<div class="relative h-[400px] w-full max-w-md bg-contain bg-center bg-no-repeat" data-alt="Abstract 3D wireframe outline of a human body with left knee glowing orange" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBMYRpa-_-cM59POP2bSjAlotP6OYfVpoLfkU8prhd6utdsQLk2z4sofmaI-o4vJE45cav5s5ELvCpZ6LDcuLGaTJAU-GkoqHGoPVvQ5ttckUhSZPO4Fs3xAyTn9rYl-PFbcgcnu0y4pFC0uztNNID_YBv7AYPavhfawG-gAniTablP3nTecfQN9nMGUC9gyzle4X0H_-rV_hCTk_MGIlzUn5jbtrx3Ntsl0pNgnuYmk83aChkuJkfketQ_C9lDWiSpROeGFsBEsZXC"); opacity: 0.8;'>
+<!-- This overlay simulates the heatmap/tech overlay look -->
+<div class="absolute inset-0 bg-[#102323]/40 mix-blend-multiply"></div>
+<!-- Hotspot on Knee -->
+<div class="absolute top-[65%] left-[38%] translate-x-1/2">
+<span class="relative flex h-6 w-6">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-6 w-6 bg-orange-500 border-2 border-white dark:border-[#183535]"></span>
+</span>
+<!-- Tooltip -->
+<div class="absolute left-8 top-0 bg-white dark:bg-[#214a4a] p-3 rounded-lg shadow-lg w-48 border border-[#e5e7eb] dark:border-[#0f2323] z-20">
+<p class="text-xs font-bold text-orange-500 uppercase tracking-wide mb-1">Attention Needed</p>
+<h4 class="text-sm font-bold text-[#111418] dark:text-white">Left Knee Meniscus</h4>
+<p class="text-xs text-[#637588] dark:text-[#cbd5e1] mt-1">Mobility: 85%</p>
+<p class="text-xs text-[#637588] dark:text-[#cbd5e1]">Inflammation: Low</p>
+</div>
+</div>
+<!-- Tech Grid Overlay -->
+<div class="absolute inset-0 bg-[linear-gradient(rgba(5,204,204,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(5,204,204,0.03)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+</div>
+</div>
+</div>
+<!-- Recommended Routine Column -->
+<div class="flex flex-col gap-6">
+<h3 class="text-lg font-bold text-[#111418] dark:text-white px-1">Recommended for You</h3>
+<!-- Card 1 (Main) -->
+<div class="bg-white dark:bg-[#183535] rounded-xl p-0 shadow-sm border border-[#e5e7eb] dark:border-[#214a4a] overflow-hidden flex flex-col group cursor-pointer hover:border-primary/50 transition-colors">
+<div class="h-40 bg-cover bg-center relative" data-alt="Person stretching leg on a yoga mat in a modern living room" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAoDoqzPP4yxUNa1Qy8TeOyBJnQ62AHG7xkSejwi_qgMWsAmhFxm1hra5GWlzLvSEUWOBoHN-VoMt14iwHixKYFHw6cyeZFMCIvTbxW6bJguX0-M1gwUl5aAUQhbPLvo3keR0aF5EiB3oN8A_Jkz0JFj7K_DieKxAZgOpFkNt9QcUciyulsyXAkBt7A0y5Pj9yjPCEnJ53KRZad1i8uOQ5fr_ar9RvtpTPP5bI2JTeqca9eoIAh-lVIa3JwmA6kEY9FGFk_F8z-W7kM");'>
+<div class="absolute inset-0 bg-gradient-to-t from-[#183535] to-transparent opacity-80"></div>
+<div class="absolute bottom-3 left-4">
+<span class="bg-primary text-[#102323] text-xs font-bold px-2 py-1 rounded">Recommended</span>
+</div>
+<div class="absolute top-3 right-3 bg-[#102323]/60 backdrop-blur-sm rounded-full p-1.5 text-white">
+<span class="material-symbols-outlined text-[20px]">play_arrow</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h4 class="text-lg font-bold text-[#111418] dark:text-white mb-1 group-hover:text-primary transition-colors">Morning Knee Mobility</h4>
+<p class="text-sm text-[#637588] dark:text-[#8ecccc] mb-4 line-clamp-2">Gentle movements to increase blood flow and reduce stiffness before starting your day.</p>
+<div class="mt-auto flex items-center justify-between text-xs text-[#637588] dark:text-[#9ca3af]">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>15 mins</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">fitness_center</span>
+<span>Low Intensity</span>
+</div>
+</div>
+<button class="mt-4 w-full py-2.5 rounded-lg bg-primary text-[#102323] font-bold text-sm hover:bg-primary/90 transition-colors">Start Routine</button>
+</div>
+</div>
+<!-- Card 2 (Secondary) -->
+<div class="bg-white dark:bg-[#183535] rounded-xl p-4 shadow-sm border border-[#e5e7eb] dark:border-[#214a4a] flex gap-4 items-center group cursor-pointer hover:bg-[#f8fafc] dark:hover:bg-[#214a4a] transition-colors">
+<div class="size-16 rounded-lg bg-cover bg-center shrink-0" data-alt="Close up of foam roller exercise" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCtIV54JtivU4Iav8woWwfcZU5hGUR1HU23_iR5LX95wBShSA1lX_Rzd-0ja8FMxz6452k0g26KuHTG-d43UgLza8tDKmKNXqIMX4xgsD-fKMHJcHhZTFXch9dpQ6dMDTjrGm3bah0lParIpd-0VdLFWdFZcxk1UGxU4Ni9wj5NlFeejLe8WCgkSaCbhFXSRUI-fu4mq4rhafUQ-n4YfNZmLVfaQewuws-lqg30sWazElaRKHml3CbGuEEPYMSfOrbnPiUieMg7ttGn");'></div>
+<div class="flex flex-col flex-1 min-w-0">
+<h5 class="text-sm font-bold text-[#111418] dark:text-white truncate">Evening Foam Rolling</h5>
+<p class="text-xs text-[#637588] dark:text-[#8ecccc] mb-1">10 mins • Recovery</p>
+<div class="w-full bg-[#e2e8f0] dark:bg-[#0f2323] h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full w-[0%]"></div>
+</div>
+</div>
+<div class="shrink-0 text-[#cbd5e1] group-hover:text-primary">
+<span class="material-symbols-outlined">play_circle</span>
+</div>
+</div>
+<!-- Card 3 (Secondary) -->
+<div class="bg-white dark:bg-[#183535] rounded-xl p-4 shadow-sm border border-[#e5e7eb] dark:border-[#214a4a] flex gap-4 items-center group cursor-pointer hover:bg-[#f8fafc] dark:hover:bg-[#214a4a] transition-colors">
+<div class="size-16 rounded-lg bg-cover bg-center shrink-0" data-alt="Person doing resistance band exercises" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA3jBaBIYDVmAjOih2vRF0Vie02YXMvFoV19iEQLrwSq1hgjMK7RVAwAf76WUaP9jfPsy5T20yLQxhQNAgMenZEnIFt5Hhq7jEh0cwfIps5su5d1T1YVDavD06nwSGoPDDFax-oOKfSRBzQEtO7PXIjkTvZaxf8rlqqne0dBLxRnmYK9yXZXMj9TaE826_kqCdSWSUFecvBAoGziKjnnjp20j_vDJ6lhoY7Q8cWb9gN4UWvp9gRbII5ZPqKNPz4ftTJAvOFrrP34hq9");'></div>
+<div class="flex flex-col flex-1 min-w-0">
+<h5 class="text-sm font-bold text-[#111418] dark:text-white truncate">Resistance Band Basics</h5>
+<p class="text-xs text-[#637588] dark:text-[#8ecccc] mb-1">20 mins • Strength</p>
+<div class="w-full bg-[#e2e8f0] dark:bg-[#0f2323] h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full w-[30%]"></div>
+</div>
+</div>
+<div class="shrink-0 text-[#cbd5e1] group-hover:text-primary">
+<span class="material-symbols-outlined">play_circle</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Upcoming & Doctor -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-6">
+<div class="bg-white dark:bg-[#183535] rounded-xl p-6 shadow-sm border border-[#e5e7eb] dark:border-[#214a4a]">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-[#111418] dark:text-white">Upcoming Consultation</h3>
+<a class="text-primary text-xs font-bold hover:underline" href="#">View All</a>
+</div>
+<div class="flex items-start gap-4">
+<div class="size-12 rounded-full bg-cover bg-center" data-alt="Doctor headshot" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDJr6Og73mQf0yT7lO4_J2PrwjGagV81wjAr4Vb3j7zg5HPg2S0eI6sqbjYmvsESwVORCQhEIC_8TwkR7H_uavtFB1g3SRDurmzrpwfT7JhJcyU0-Rqy1KGZw3m3N7VqUYL0o55KBruYn743IjtM0IuIWH3Qakpfb1VqVF0ftklAIlVGcxxczsheqBFdcUC5017xa0gKDcdGDMPteSwiXJ_HXpdGZvL_NJuXUh2Fu00EsWoMCFZqQAFA2AJRZZ2w4bj9ujBgsx5dM-e");'></div>
+<div class="flex-1">
+<h4 class="font-bold text-[#111418] dark:text-white">Dr. Sarah Chen</h4>
+<p class="text-xs text-[#637588] dark:text-[#8ecccc] mb-3">Physical Therapist • Ortho Specialist</p>
+<div class="flex items-center gap-3 text-sm bg-[#f8fafc] dark:bg-[#102323] p-3 rounded-lg border border-[#e5e7eb] dark:border-[#214a4a]">
+<span class="material-symbols-outlined text-primary">videocam</span>
+<span class="font-medium text-[#111418] dark:text-white">Tomorrow, 10:00 AM</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-[#214a4a] rounded-xl p-6 shadow-sm border border-[#214a4a] relative overflow-hidden flex items-center justify-between">
+<div class="relative z-10 max-w-[60%]">
+<h3 class="font-bold text-white text-lg mb-2">Need Help?</h3>
+<p class="text-[#8ecccc] text-sm mb-4">Chat with our AI assistant for quick answers about your pain or routine.</p>
+<button class="bg-primary text-[#102323] px-4 py-2 rounded-lg text-sm font-bold hover:bg-white transition-colors">Start Chat</button>
+</div>
+<div class="absolute right-0 bottom-0 h-32 w-32 opacity-20">
+<span class="material-symbols-outlined text-[140px] text-white">smart_toy</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

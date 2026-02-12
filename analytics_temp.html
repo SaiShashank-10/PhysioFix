@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Post-Workout Progress Analytics - PhysioFix</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#05cccc",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2323",
+                        "card-dark": "#162e2e",
+                        "border-dark": "#214a4a"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', 'Noto Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-border-dark px-10 py-3 bg-white dark:bg-background-dark">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined !text-2xl">health_and_safety</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">PhysioFix</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="hidden md:flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Exercises</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Progress</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Settings</a>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC5hBM5iMvVk35GwnlqyYvHRIUm5ZoTMuJZRJWo5uIJsAvbQndH5h4nzm79X5UX655736zXbipxQbw5Fv_6jZJTd1dWPyxMTmwVnjvMNXSOKpBdiT-ouY5steMzHDwAEU3uxrj1MJyB7bj4Y6ofRgMYIBPS4DFH0c45_ALhmdnpqiKBsuiXQEisztJelqD6hL4REn9wlTAIOVtcBQeXVqvlZN-E1tZtMDbZq4TmRKpBBgjY9mr-jf0MJ1L539UpKSkW4EZJytd2rlUn");'></div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex flex-1 flex-col items-center py-8 px-4 sm:px-10 lg:px-40">
+<div class="flex flex-col max-w-[1024px] w-full gap-8">
+<!-- Page Heading -->
+<div class="flex flex-wrap items-end justify-between gap-4 border-b border-slate-200 dark:border-border-dark pb-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined filled">check_circle</span>
+<span class="text-sm font-bold uppercase tracking-wider">Workout Complete</span>
+</div>
+<h1 class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Session Complete!</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal leading-normal max-w-xl">Great job completing today's recovery session. Here is your performance breakdown and muscle engagement analysis.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 rounded-lg bg-slate-100 dark:bg-card-dark px-4 py-2.5 text-sm font-bold text-slate-700 dark:text-white hover:bg-slate-200 dark:hover:bg-[#1f3f3f] transition-colors border border-transparent dark:border-border-dark">
+<span class="material-symbols-outlined text-[20px]">share</span>
+                            Share
+                        </button>
+<button class="flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-bold text-slate-900 hover:bg-[#04b2b2] transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                            Download Report
+                        </button>
+</div>
+</div>
+<!-- Stats Summary -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Total Reps</p>
+<span class="material-symbols-outlined text-primary">fitness_center</span>
+</div>
+<div class="flex items-end gap-3 mt-1">
+<p class="text-slate-900 dark:text-white text-3xl font-bold leading-tight">45</p>
+<div class="flex items-center text-[#0bda50] text-sm font-medium mb-1 bg-[#0bda50]/10 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+5%</span>
+</div>
+</div>
+<p class="text-slate-400 dark:text-slate-500 text-xs mt-1">vs. last session</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Avg Accuracy</p>
+<span class="material-symbols-outlined text-primary">verified</span>
+</div>
+<div class="flex items-end gap-3 mt-1">
+<p class="text-slate-900 dark:text-white text-3xl font-bold leading-tight">92%</p>
+<div class="flex items-center text-[#0bda50] text-sm font-medium mb-1 bg-[#0bda50]/10 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+2%</span>
+</div>
+</div>
+<p class="text-slate-400 dark:text-slate-500 text-xs mt-1">AI tracking score</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Pain Level</p>
+<span class="material-symbols-outlined text-primary">sentiment_satisfied</span>
+</div>
+<div class="flex items-end gap-3 mt-1">
+<p class="text-slate-900 dark:text-white text-3xl font-bold leading-tight">2<span class="text-lg text-slate-400 font-normal">/10</span></p>
+<div class="flex items-center text-[#0bda50] text-sm font-medium mb-1 bg-[#0bda50]/10 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[16px]">trending_down</span>
+<span>-10%</span>
+</div>
+</div>
+<p class="text-slate-400 dark:text-slate-500 text-xs mt-1">Self-reported post-session</p>
+</div>
+</div>
+<!-- Main Analysis Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Chart -->
+<div class="lg:col-span-2 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark p-6 shadow-sm flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Range of Motion (ROM)</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Right Knee Extension Progress</p>
+</div>
+<div class="text-right">
+<p class="text-primary text-3xl font-bold leading-tight">110°</p>
+<p class="text-slate-400 text-xs">Target: 125°</p>
+</div>
+</div>
+<div class="flex-1 w-full min-h-[240px] relative">
+<!-- Chart SVG -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 800 300">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#05cccc" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#05cccc" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Lines -->
+<line class="stroke-slate-200 dark:stroke-slate-700" stroke="#2d3748" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="800" y1="250" y2="250"></line>
+<line class="stroke-slate-200 dark:stroke-slate-700" stroke="#2d3748" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="800" y1="190" y2="190"></line>
+<line class="stroke-slate-200 dark:stroke-slate-700" stroke="#2d3748" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="800" y1="130" y2="130"></line>
+<line class="stroke-slate-200 dark:stroke-slate-700" stroke="#2d3748" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="800" y1="70" y2="70"></line>
+<!-- Area -->
+<path d="M0 250 L0 200 L114 180 L228 195 L342 160 L456 140 L570 110 L684 95 L800 80 L800 250 Z" fill="url(#chartGradient)"></path>
+<!-- Line -->
+<polyline fill="none" points="0,200 114,180 228,195 342,160 456,140 570,110 684,95 800,80" stroke="#05cccc" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
+<!-- Points -->
+<circle class="fill-white dark:fill-background-dark" cx="0" cy="200" fill="#0f2323" r="4" stroke="#05cccc" stroke-width="2"></circle>
+<circle class="fill-white dark:fill-background-dark" cx="114" cy="180" fill="#0f2323" r="4" stroke="#05cccc" stroke-width="2"></circle>
+<circle class="fill-white dark:fill-background-dark" cx="228" cy="195" fill="#0f2323" r="4" stroke="#05cccc" stroke-width="2"></circle>
+<circle class="fill-white dark:fill-background-dark" cx="342" cy="160" fill="#0f2323" r="4" stroke="#05cccc" stroke-width="2"></circle>
+<circle class="fill-white dark:fill-background-dark" cx="456" cy="140" fill="#0f2323" r="4" stroke="#05cccc" stroke-width="2"></circle>
+<circle class="fill-white dark:fill-background-dark" cx="570" cy="110" fill="#0f2323" r="4" stroke="#05cccc" stroke-width="2"></circle>
+<circle class="fill-white dark:fill-background-dark" cx="684" cy="95" fill="#0f2323" r="4" stroke="#05cccc" stroke-width="2"></circle>
+<circle cx="800" cy="80" fill="#05cccc" r="6" stroke="#fff" stroke-width="2"></circle>
+</svg>
+</div>
+<div class="flex justify-between mt-4 px-2 text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide">
+<span>Week 1</span>
+<span>Week 2</span>
+<span>Week 3</span>
+<span>Week 4</span>
+<span>Week 5</span>
+<span>Week 6</span>
+<span>Week 7</span>
+<span>Today</span>
+</div>
+</div>
+<!-- Muscle Heatmap Card -->
+<div class="rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark p-6 shadow-sm flex flex-col">
+<div class="mb-4">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Muscle Engagement</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Exertion levels by muscle group</p>
+</div>
+<div class="relative flex-1 flex items-center justify-center bg-slate-50 dark:bg-black/20 rounded-lg py-4">
+<!-- Abstract Human Body Representation for Heatmap -->
+<div class="relative h-64 w-32">
+<!-- Body Base -->
+<div class="absolute inset-0 bg-slate-200 dark:bg-slate-700 opacity-20 rounded-full blur-xl"></div>
+<!-- Right Leg (Target) -->
+<div class="absolute bottom-0 right-1/2 translate-x-1/2 w-16 h-36 bg-gradient-to-t from-orange-500 to-red-500 rounded-full opacity-80 blur-md" title="Quadriceps - High Exertion"></div>
+<div class="absolute bottom-8 right-1/2 translate-x-1/2 w-12 h-12 bg-red-500 rounded-full opacity-90 blur-lg animate-pulse"></div>
+<!-- Left Leg (Support) -->
+<div class="absolute bottom-0 left-0 w-8 h-36 bg-blue-400/30 rounded-full blur-md" title="Support Leg - Low Exertion"></div>
+<!-- Core -->
+<div class="absolute top-16 left-1/2 -translate-x-1/2 w-20 h-24 bg-yellow-400/40 rounded-full blur-md" title="Core - Moderate Exertion"></div>
+<!-- Labels overlaid -->
+<div class="absolute top-28 left-20 bg-white/10 backdrop-blur-sm px-2 py-1 rounded text-[10px] text-white whitespace-nowrap border border-white/20">
+                                    Quads: High
+                                </div>
+</div>
+</div>
+<div class="mt-4 grid grid-cols-2 gap-2">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-red-500"></div>
+<span class="text-xs text-slate-500 dark:text-slate-400">High Impact</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+<span class="text-xs text-slate-500 dark:text-slate-400">Moderate</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-blue-400"></div>
+<span class="text-xs text-slate-500 dark:text-slate-400">Low Impact</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Next Steps / Recommendations -->
+<div class="rounded-xl bg-gradient-to-r from-primary/10 to-transparent border border-primary/20 p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-start gap-4">
+<div class="p-3 bg-primary/20 rounded-full text-primary">
+<span class="material-symbols-outlined text-3xl">lightbulb</span>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-white text-lg font-bold">AI Recommendation</h3>
+<p class="text-slate-600 dark:text-slate-300 text-sm mt-1 max-w-xl">
+                                Based on your high pain level today, we recommend taking a 24-hour rest period before your next intense session. Focus on light stretching tomorrow.
+                            </p>
+</div>
+</div>
+<button class="shrink-0 rounded-lg border border-slate-300 dark:border-white/20 px-6 py-3 text-sm font-bold text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors whitespace-nowrap">
+                        View Stretching Routine
+                    </button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

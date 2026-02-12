@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PhysioFix - Tele-Doctor Movement Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#05cccc",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2323",
+                        "surface-dark": "#1a3333",
+                        "surface-border": "#2f6a6a",
+                        "text-secondary": "#8ecccc",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-white overflow-x-hidden selection:bg-primary selection:text-background-dark">
+<div class="relative flex h-full w-full flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-[#214a4a] bg-white dark:bg-[#102323] px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-8 flex items-center justify-center bg-primary/20 rounded-lg text-primary">
+<span class="material-symbols-outlined">monitor_heart</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">PhysioFix</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="hidden md:flex items-center gap-9">
+<a class="text-slate-600 dark:text-text-secondary text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-text-secondary text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Exercises</a>
+<a class="text-slate-900 dark:text-white text-sm font-bold leading-normal border-b-2 border-primary pb-0.5" href="#">Reports</a>
+<a class="text-slate-600 dark:text-text-secondary text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Profile</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center gap-2 rounded-lg h-9 px-4 bg-transparent border border-slate-200 dark:border-[#2f6a6a] text-slate-900 dark:text-white text-sm font-medium hover:bg-slate-100 dark:hover:bg-[#214a4a] transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-[#102323] text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#04b2b2] transition-colors">
+<span class="truncate">Log Out</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 border border-slate-200 dark:border-[#2f6a6a]" data-alt="User profile picture placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDyx9IHG4xCVabJyBNeB10DAO_CC90jIZlWmm8500fFp7La2w8lGfUigfUn4lDuTObhEFZVwNZjlHO5rzyf0iAjtKMhcG7KxJ01ZNk4Be9NFkAMU0a9xFZLqO_EE6N5NdWeaiuECavzwH8e-cPzDHCNceHmY0FHD5PkhpL71WzKhb4Os9toEYern0Cg_KP2DR3bm3eX_dA6uDdBnqIA97hqwdv2VBuei-ellljqHnboJuWfbKVrM0d_uYcZ-YTBey1pL4TSTMOr9o1K");'></div>
+</div>
+</div>
+</header>
+<main class="layout-container flex h-full grow flex-col w-full max-w-[1200px] mx-auto px-6 py-8">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 px-4 pb-4">
+<a class="text-slate-500 dark:text-[#8ecccc] text-sm font-medium leading-normal hover:text-primary" href="#">Home</a>
+<span class="text-slate-400 dark:text-[#8ecccc] text-sm font-medium leading-normal">/</span>
+<a class="text-slate-500 dark:text-[#8ecccc] text-sm font-medium leading-normal hover:text-primary" href="#">Dashboard</a>
+<span class="text-slate-400 dark:text-[#8ecccc] text-sm font-medium leading-normal">/</span>
+<span class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Movement Report</span>
+</div>
+<!-- Page Heading & Actions -->
+<div class="flex flex-col md:flex-row flex-wrap justify-between gap-6 px-4 pb-8 border-b border-slate-200 dark:border-[#2f6a6a]/50">
+<div class="flex min-w-72 flex-col gap-2">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined text-[32px]">clinical_notes</span>
+</div>
+<div>
+<h1 class="text-slate-900 dark:text-white text-3xl font-black leading-tight tracking-[-0.033em]">Tele-Doctor Movement Report</h1>
+<p class="text-slate-500 dark:text-[#8ecccc] text-base font-normal leading-normal">Generated on Oct 24, 2023 for Dr. Sarah Jenkin</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 flex-wrap">
+<div class="flex items-center gap-2 px-3 py-2 bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-border rounded-lg">
+<span class="text-slate-600 dark:text-white text-sm font-medium">Share with Doctor</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<button class="flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-slate-800 dark:bg-[#214a4a] text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-slate-700 dark:hover:bg-[#2f6a6a] transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span class="truncate">Export PDF</span>
+</button>
+<button class="flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-primary text-[#102323] text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#04b2b2] transition-colors shadow-sm shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">send</span>
+<span class="truncate">Email Report</span>
+</button>
+</div>
+</div>
+<!-- Stats Overview -->
+<div class="px-4 py-8">
+<h2 class="text-slate-900 dark:text-white tracking-tight text-xl font-bold leading-tight mb-5 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                    Patient Adherence &amp; Performance
+                </h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-slate-200 dark:border-surface-border bg-white dark:bg-surface-dark shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-text-secondary text-sm font-medium">Adherence Score</p>
+<span class="material-symbols-outlined text-green-500">trending_up</span>
+</div>
+<div class="flex items-end gap-2">
+<p class="text-slate-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">94%</p>
+<p class="text-[#0bda50] text-sm font-bold mb-1">+5%</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-slate-200 dark:border-surface-border bg-white dark:bg-surface-dark shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-text-secondary text-sm font-medium">Sessions Completed</p>
+<span class="material-symbols-outlined text-green-500">check_circle</span>
+</div>
+<div class="flex items-end gap-2">
+<p class="text-slate-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">12<span class="text-lg text-slate-400 dark:text-slate-500">/12</span></p>
+<p class="text-[#0bda50] text-sm font-bold mb-1">Perfect</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-slate-200 dark:border-surface-border bg-white dark:bg-surface-dark shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-text-secondary text-sm font-medium">Avg. Pain Level</p>
+<span class="material-symbols-outlined text-[#fa5c38]">healing</span>
+</div>
+<div class="flex items-end gap-2">
+<p class="text-slate-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">2.5<span class="text-lg text-slate-400 dark:text-slate-500">/10</span></p>
+<p class="text-[#fa5c38] text-sm font-bold mb-1">-1.5</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-slate-200 dark:border-surface-border bg-white dark:bg-surface-dark shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-text-secondary text-sm font-medium">Total Recovery Time</p>
+<span class="material-symbols-outlined text-primary">schedule</span>
+</div>
+<div class="flex items-end gap-2">
+<p class="text-slate-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">4 Wks</p>
+<p class="text-primary text-sm font-bold mb-1">On Track</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Two Column Layout for Notes & Charts -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 px-4">
+<!-- Main Content: Charts & ROM -->
+<div class="lg:col-span-2 flex flex-col gap-6">
+<!-- ROM Chart Section -->
+<div class="rounded-xl border border-slate-200 dark:border-surface-border bg-white dark:bg-surface-dark p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold">Range of Motion (ROM) Analysis</h3>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 rounded-md text-xs font-medium bg-slate-100 dark:bg-[#214a4a] text-slate-600 dark:text-text-secondary hover:bg-slate-200 dark:hover:bg-[#2f6a6a]">Left Knee</button>
+<button class="px-3 py-1.5 rounded-md text-xs font-bold bg-primary/20 text-primary border border-primary/20">Right Knee</button>
+</div>
+</div>
+<!-- Pseudo Chart Visualization -->
+<div class="relative w-full h-64 bg-slate-50 dark:bg-[#102323] rounded-lg border border-slate-100 dark:border-[#214a4a] flex items-end justify-between px-6 pb-6 pt-10 gap-4 overflow-hidden">
+<!-- Grid Lines -->
+<div class="absolute inset-0 z-0 flex flex-col justify-between py-6 px-6 opacity-20 pointer-events-none">
+<div class="w-full h-px bg-slate-400"></div>
+<div class="w-full h-px bg-slate-400"></div>
+<div class="w-full h-px bg-slate-400"></div>
+<div class="w-full h-px bg-slate-400"></div>
+<div class="w-full h-px bg-slate-400"></div>
+</div>
+<!-- Bars -->
+<div class="z-10 w-full flex items-end justify-between h-full gap-2 md:gap-4">
+<div class="w-full bg-slate-300 dark:bg-[#2f6a6a] rounded-t-sm h-[40%] hover:opacity-80 transition-opacity relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Week 1: 45°</div>
+</div>
+<div class="w-full bg-slate-300 dark:bg-[#2f6a6a] rounded-t-sm h-[55%] hover:opacity-80 transition-opacity relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Week 2: 60°</div>
+</div>
+<div class="w-full bg-slate-300 dark:bg-[#2f6a6a] rounded-t-sm h-[65%] hover:opacity-80 transition-opacity relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Week 3: 75°</div>
+</div>
+<div class="w-full bg-primary/60 rounded-t-sm h-[80%] hover:opacity-80 transition-opacity relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Week 4: 95°</div>
+</div>
+<div class="w-full bg-primary rounded-t-sm h-[92%] hover:opacity-80 transition-opacity relative group shadow-[0_0_15px_rgba(5,204,204,0.3)]">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Current: 110°</div>
+</div>
+</div>
+</div>
+<div class="flex justify-between mt-4 text-xs text-slate-500 dark:text-text-secondary font-medium">
+<span>Week 1</span>
+<span>Week 2</span>
+<span>Week 3</span>
+<span>Week 4</span>
+<span class="text-primary font-bold">Current</span>
+</div>
+</div>
+<!-- Detailed Metrics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="rounded-xl border border-slate-200 dark:border-surface-border bg-white dark:bg-surface-dark p-6 shadow-sm">
+<h4 class="text-slate-900 dark:text-white font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">speed</span> Movement Velocity
+                            </h4>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-sm mb-1">
+<span class="text-slate-500 dark:text-text-secondary">Flexion Speed</span>
+<span class="text-slate-900 dark:text-white font-bold">Normal</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-[#102323] rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-1">
+<span class="text-slate-500 dark:text-text-secondary">Extension Speed</span>
+<span class="text-yellow-500 font-bold">Slow</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-[#102323] rounded-full h-2">
+<div class="bg-yellow-500 h-2 rounded-full" style="width: 45%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="rounded-xl border border-slate-200 dark:border-surface-border bg-white dark:bg-surface-dark p-6 shadow-sm">
+<h4 class="text-slate-900 dark:text-white font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">balance</span> Balance Stability
+                            </h4>
+<div class="flex items-center gap-4">
+<div class="relative size-20">
+<svg class="size-full" viewbox="0 0 36 36">
+<path class="text-slate-100 dark:text-[#102323]" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="88, 100" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center text-sm font-bold text-slate-900 dark:text-white">88%</div>
+</div>
+<div class="flex flex-col">
+<p class="text-sm text-slate-500 dark:text-text-secondary">Stability Index</p>
+<p class="text-lg font-bold text-slate-900 dark:text-white">Good Control</p>
+<p class="text-xs text-green-500">Improved from last week</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar: Clinical Notes -->
+<div class="lg:col-span-1 flex flex-col gap-6">
+<div class="rounded-xl border border-slate-200 dark:border-surface-border bg-white dark:bg-surface-dark p-0 shadow-sm overflow-hidden flex flex-col h-full">
+<div class="p-5 border-b border-slate-200 dark:border-surface-border bg-slate-50 dark:bg-[#1a3333]">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">psychology_alt</span>
+                                AI Clinical Analysis
+                            </h3>
+</div>
+<div class="p-5 flex flex-col gap-6 text-sm grow">
+<div>
+<h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-text-secondary mb-2">Subjective</h4>
+<p class="text-slate-600 dark:text-white leading-relaxed">
+                                    Patient reports decreased pain during daily activities (2/10). Stiffness remains present in the morning but subsides within 30 minutes. Confidence in walking without aid has increased.
+                                </p>
+</div>
+<div>
+<h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-text-secondary mb-2">Objective</h4>
+<ul class="list-disc pl-4 space-y-1 text-slate-600 dark:text-white leading-relaxed marker:text-primary">
+<li>Right knee extension improved by 5° since last session.</li>
+<li>Flexion reached 110°, meeting Week 4 goals.</li>
+<li>Gait analysis shows improved symmetry (Left: 48%, Right: 52%).</li>
+</ul>
+</div>
+<div>
+<h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-text-secondary mb-2">Assessment</h4>
+<div class="bg-primary/10 border border-primary/20 rounded-lg p-3">
+<p class="text-slate-700 dark:text-primary font-medium leading-relaxed">
+                                        Recovery is progressing ahead of schedule. Inflammation markers are low. Adherence to home exercise program is excellent (94%).
+                                    </p>
+</div>
+</div>
+<div>
+<h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-text-secondary mb-2">Plan</h4>
+<p class="text-slate-600 dark:text-white leading-relaxed">
+                                    1. Increase resistance for quadriceps strengthening.<br/>
+                                    2. Introduce single-leg balance exercises.<br/>
+                                    3. Follow-up tele-consult scheduled for Nov 1st.
+                                </p>
+</div>
+</div>
+<div class="p-4 border-t border-slate-200 dark:border-surface-border bg-slate-50 dark:bg-[#102323]">
+<button class="w-full py-2 rounded-lg border border-slate-300 dark:border-surface-border text-slate-600 dark:text-text-secondary text-sm font-bold hover:bg-slate-100 dark:hover:bg-[#214a4a] transition-colors">
+                                Edit Notes
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Video Analysis Preview (Thumbnails) -->
+<div class="px-4 py-8">
+<div class="flex justify-between items-center mb-5">
+<h2 class="text-slate-900 dark:text-white tracking-tight text-xl font-bold leading-tight flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">videocam</span>
+                        Latest Session Captures
+                    </h2>
+<a class="text-primary text-sm font-bold hover:underline" href="#">View All Sessions</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+<!-- Card 1 -->
+<div class="group relative rounded-xl overflow-hidden aspect-video cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Patient performing squats exercise video thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1WauTaXABiYIc3erbLDrqnr8pGe2K6GUvd0Th_WR6HrhG1mU1M0rZng7-2b9Ux-hviiG4ALXdnpdzGFRWiV6paVagHdDA7NNDsP5ajdyK-05GgaZ_5GJoUmcGIKZ-ge78aQZvZNVESkRaXkYIc7-dVtsU8BM0PKbC0CZNuWbzTqKl8MBZE0NOgOFZX57VwlgXHOBK9OnJwT7_Ta5rttagVB9B-DgpCFEYlvkJPRYL6K7HBbVoxnmBeSYKR1pWGqg5oSI8_W0wRnpX');"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="bg-primary/90 text-background-dark rounded-full p-3 shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
+<span class="material-symbols-outlined text-3xl">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent">
+<p class="text-white font-bold text-sm">Squats - Set 3</p>
+<p class="text-white/70 text-xs">Oct 24 • 10:30 AM</p>
+</div>
+<div class="absolute top-3 right-3 bg-green-500 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm">
+                            Correct Form
+                        </div>
+</div>
+<!-- Card 2 -->
+<div class="group relative rounded-xl overflow-hidden aspect-video cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Patient performing lunges exercise video thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDhjfq3ezSFbQtAyUqlRjDu-MI-deHM1okDNFIzg24Ba6_fhIy6_w4S1eXQhiKV_sFo3maVFzG9BNJDlYl2OOAU3tDKLnPEMJArZ4JAR_xYB6iE8j0jIAX-y323JFZbPxtmMDi09dbhNmiVpadjgBLGlm5i_IaPdgavEeGoXsvIvXBdDNH0U5vWWKt3RW_KDOcMLty6J6JDXw3XMKlPWVaBD9auKfCFK8243q4c1t_x-TVSJD2q0wba0B7n_EKNJXdSAfWdIighgi5O');"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="bg-primary/90 text-background-dark rounded-full p-3 shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
+<span class="material-symbols-outlined text-3xl">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent">
+<p class="text-white font-bold text-sm">Lunges - Set 2</p>
+<p class="text-white/70 text-xs">Oct 24 • 10:45 AM</p>
+</div>
+<div class="absolute top-3 right-3 bg-yellow-500 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm">
+                            Minor Correction
+                        </div>
+</div>
+<!-- Card 3 -->
+<div class="group relative rounded-xl overflow-hidden aspect-video cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Patient performing leg raises exercise video thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1MvYPT_G9mctcFOw0dKbZUdFgXO7SpeUPQ6LFyvXfpNFJtBWtwxee9PQ1aHFoNmoYH2vG35MfNAe05s4hOLnHkH7w0llse3_tPfKSMIlgmJLNp7OhHjvT8hRGl1exEGGnVyzviVFmCzHcTfzTljJwNk-7rdxTtrKDnHGPwd4mrKuqv7Oy6ue9RvVMTBE9zsFCkHv3dk3wDA4P3KiChzMdfReFI15jrWI-0Up_zQMoqmkrLLO9IXvv5VTl6IZfvnhyJlLcdcl6J_Nc');"></div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="bg-primary/90 text-background-dark rounded-full p-3 shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
+<span class="material-symbols-outlined text-3xl">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent">
+<p class="text-white font-bold text-sm">Leg Raises - Set 1</p>
+<p class="text-white/70 text-xs">Oct 24 • 11:00 AM</p>
+</div>
+<div class="absolute top-3 right-3 bg-green-500 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm">
+                            Correct Form
+                        </div>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="border-t border-slate-200 dark:border-[#214a4a] bg-white dark:bg-[#102323] py-8 mt-auto">
+<div class="max-w-[1200px] mx-auto px-10 text-center text-slate-500 dark:text-[#8ecccc] text-sm">
+<p>© 2023 PhysioFix Inc. All rights reserved. • <a class="hover:text-primary" href="#">Privacy Policy</a> • <a class="hover:text-primary" href="#">Terms of Service</a></p>
+<p class="mt-2 text-xs opacity-70">Generated for professional medical review. Not a substitute for direct medical advice.</p>
+</div>
+</footer>
+</div>
+</body></html>

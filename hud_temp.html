@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PhysioFix - Active Workout HUD</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#05cccc",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2323",
+                        "emergency": "#ef4444",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col overflow-hidden text-slate-900 dark:text-white selection:bg-primary selection:text-background-dark">
+<!-- Top Navigation -->
+<header class="w-full border-b border-[#214a4a] bg-[#102323] px-6 py-4 z-20">
+<div class="max-w-[1400px] mx-auto flex items-center justify-between">
+<!-- Brand -->
+<div class="flex items-center gap-3 text-white">
+<div class="size-8 flex items-center justify-center bg-primary/20 rounded-lg text-primary">
+<span class="material-symbols-outlined">vital_signs</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">PhysioFix</h2>
+</div>
+<!-- Header Stats (Visible on desktop) -->
+<div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">timer</span>
+<span>12:45 Elapsed</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">monitor_heart</span>
+<span>118 BPM</span>
+</div>
+</div>
+<!-- User / Exit -->
+<div class="flex items-center gap-6">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-[#214a4a]" data-alt="User profile photo showing a smiling woman" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCkQR6azGm3dXljEn9yJM4oPSsWems7lIFI1iIBflafStoTit207Ydh8qwweBFVm_MpDZipvsb3kP709ba73zHrLhgSz344w1jo2vIPCWfx4VFny2NPijYE56Py5h-xQXHOdxv3uvWKWoNWimKzDt6Ud2Jkf4bXOPk9SpeSemDyvAaRVCIip5c3-TnoCQ51xVSH80vYCx3T5NRcsEw1fb8HuD6f3tJ8HIFPNGOPDAskvkL63avRlYPp-MtMh1cSGDmocgBPWKQQ2KWJ");'>
+</div>
+<button class="hidden sm:flex cursor-pointer items-center gap-2 rounded-lg bg-[#1a3838] hover:bg-[#234b4b] transition-colors h-10 px-4 text-white text-sm font-bold border border-[#214a4a]">
+<span>Exit Session</span>
+<span class="material-symbols-outlined text-lg">logout</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area (HUD) -->
+<main class="flex-1 flex flex-col items-center justify-center p-4 lg:p-6 relative">
+<!-- Camera Feed Container -->
+<div class="relative w-full max-w-[1200px] aspect-video bg-black rounded-2xl overflow-hidden shadow-[0_0_40px_-10px_rgba(5,204,204,0.15)] border border-[#214a4a] group">
+<!-- Video Feed Background Image -->
+<div class="absolute inset-0 bg-cover bg-center opacity-80" data-alt="Athletic person performing a squat exercise in a modern living room" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCNJCPMKYmQSbKp9eAKbJ1LqiZaODsbo5WtIbAVoB5jcXKyMeMPPtxFMlEl-5Kmmpew0qzPuZztbQ6P6qLGrH6vawj-ik16gZtythOeaw_pv9AfeuygT7wyZqNnASOTZcxU4hHHnBgMrkLeQwymSewLdA6PkRZR_56fd9RHjYMulrbTzG70nHSIy-7KrXCOvAIp5OrR_bN7k0Dozj0rmWGn7vuyuNMO5jxCPG6OmE0veFzgZldvKI600fMHXdxvVXxX3oQ77ChWJQR-");'>
+</div>
+<!-- Dark Overlay Gradient for Text Readability -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/60 pointer-events-none"></div>
+<!-- AI Skeleton & Ghost Overlay (SVG Layer) -->
+<div class="absolute inset-0 w-full h-full pointer-events-none flex items-center justify-center">
+<svg class="w-full h-full opacity-90" preserveaspectratio="xMidYMid slice" viewbox="0 0 400 300">
+<!-- Ghost Guide (Desired Form) - Faint White Dashed -->
+<g fill="none" opacity="0.3" stroke="white" stroke-dasharray="4 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+<!-- Spine -->
+<line x1="205" x2="205" y1="80" y2="150"></line>
+<!-- Shoulders -->
+<line x1="185" x2="225" y1="90" y2="90"></line>
+<!-- Arms -->
+<polyline points="185,90 170,130 165,160"></polyline>
+<polyline points="225,90 240,130 245,160"></polyline>
+<!-- Hips -->
+<line x1="190" x2="220" y1="150" y2="150"></line>
+<!-- Legs (Squat position) -->
+<polyline points="190,150 175,200 175,250"></polyline>
+<polyline points="220,150 235,200 235,250"></polyline>
+<!-- Head -->
+<circle cx="205" cy="65" r="15"></circle>
+</g>
+<!-- Active Skeleton (User Form) - Neon Green -->
+<g fill="none" filter="drop-shadow(0 0 4px #05cccc)" stroke="#05cccc" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+<!-- Spine (Leaning slightly forward - error state visual) -->
+<line x1="200" x2="200" y1="85" y2="150"></line>
+<!-- Shoulders -->
+<line x1="180" x2="220" y1="95" y2="95"></line>
+<!-- Arms -->
+<polyline points="180,95 165,135 160,165"></polyline>
+<polyline points="220,95 235,135 240,165"></polyline>
+<!-- Hips -->
+<line x1="185" x2="215" y1="150" y2="150"></line>
+<!-- Legs -->
+<polyline points="185,150 170,200 170,250"></polyline>
+<polyline points="215,150 230,200 230,250"></polyline>
+<!-- Head -->
+<circle cx="200" cy="70" fill="rgba(5, 204, 204, 0.1)" r="15"></circle>
+<!-- Joint Markers -->
+<circle cx="200" cy="95" fill="#0f2323" r="3" stroke="none"></circle> <!-- Neck -->
+<circle cx="180" cy="95" fill="#0f2323" r="3" stroke="none"></circle> <!-- L Shoulder -->
+<circle cx="220" cy="95" fill="#0f2323" r="3" stroke="none"></circle> <!-- R Shoulder -->
+<circle cx="165" cy="135" fill="#0f2323" r="3" stroke="none"></circle> <!-- L Elbow -->
+<circle cx="235" cy="135" fill="#0f2323" r="3" stroke="none"></circle> <!-- R Elbow -->
+</g>
+</svg>
+</div>
+<!-- HUD Overlay Elements -->
+<div class="absolute inset-0 p-6 md:p-8 flex flex-col justify-between z-10">
+<!-- TOP ROW -->
+<div class="flex justify-between items-start">
+<!-- Voice Indicator -->
+<div class="hidden md:flex flex-col gap-1">
+<div class="flex items-center gap-2 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+<span class="material-symbols-outlined text-primary text-lg animate-pulse">mic</span>
+<span class="text-xs font-bold uppercase tracking-wider text-white">Listening</span>
+</div>
+<div class="flex gap-0.5 h-4 items-end pl-2 opacity-50">
+<div class="w-1 bg-primary h-2 rounded-full animate-[bounce_1s_infinite]"></div>
+<div class="w-1 bg-primary h-3 rounded-full animate-[bounce_1.2s_infinite]"></div>
+<div class="w-1 bg-primary h-1 rounded-full animate-[bounce_0.8s_infinite]"></div>
+<div class="w-1 bg-primary h-2 rounded-full animate-[bounce_1.1s_infinite]"></div>
+</div>
+</div>
+<!-- Rep Counter (Center) -->
+<div class="absolute left-1/2 -translate-x-1/2 top-8 flex flex-col items-center">
+<div class="flex items-baseline gap-1 drop-shadow-lg">
+<span class="text-6xl md:text-7xl font-black text-white leading-none tracking-tighter">8</span>
+<span class="text-3xl md:text-4xl font-bold text-gray-400 leading-none">/</span>
+<span class="text-3xl md:text-4xl font-bold text-gray-400 leading-none">12</span>
+</div>
+<span class="text-sm font-bold text-primary uppercase tracking-[0.2em] mt-1 drop-shadow-md">Reps Complete</span>
+</div>
+<!-- Form Accuracy Gauge (Right) -->
+<div class="bg-[#102323]/80 backdrop-blur-lg border border-[#214a4a] p-4 rounded-xl w-48 shadow-lg">
+<div class="flex justify-between items-center mb-2">
+<p class="text-gray-300 text-xs font-semibold uppercase tracking-wide">Form Accuracy</p>
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+</div>
+<div class="flex items-end gap-1 mb-2">
+<span class="text-3xl font-bold text-white leading-none">94</span>
+<span class="text-sm text-gray-400 font-medium mb-1">%</span>
+</div>
+<div class="w-full bg-gray-700/50 rounded-full h-1.5 mb-2 overflow-hidden">
+<div class="bg-primary h-full rounded-full shadow-[0_0_10px_rgba(5,204,204,0.5)]" style="width: 94%;"></div>
+</div>
+<p class="text-right text-primary text-xs font-bold uppercase tracking-wider">Excellent</p>
+</div>
+</div>
+<!-- CENTER AREA (Interactive Markers - Simulated) -->
+<!-- Example of an AR marker near the user's chest in the video -->
+<div class="absolute top-1/3 left-1/2 -translate-x-1/2 mt-8 opacity-80">
+<div class="size-16 rounded-full border-2 border-primary/30 flex items-center justify-center animate-[ping_2s_ease-in-out_infinite]"></div>
+</div>
+<!-- BOTTOM ROW -->
+<div class="flex flex-col items-center justify-end w-full pb-8">
+<!-- Live Coaching Feedback -->
+<div class="flex flex-col items-center animate-[slideUp_0.3s_ease-out]">
+<div class="flex items-center gap-2 mb-2">
+<span class="size-2 rounded-full bg-orange-400 animate-pulse"></span>
+<span class="text-orange-400 text-xs font-bold uppercase tracking-widest">Live Correction</span>
+</div>
+<div class="bg-black/60 backdrop-blur-xl border-l-4 border-primary px-8 py-4 rounded-r-lg shadow-2xl max-w-lg">
+<h1 class="text-2xl md:text-3xl font-bold text-white text-center leading-tight">Keep your chest upright!</h1>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Emergency / Pain Threshold Control Bar -->
+<div class="w-full max-w-[1200px] mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+<!-- Connection Status -->
+<div class="hidden md:flex items-center gap-3 text-gray-400 text-sm">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-[#1a3838] rounded-full border border-[#214a4a]">
+<span class="size-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+<span class="font-mono">CAM_01 ACTIVE</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-[#1a3838] rounded-full border border-[#214a4a]">
+<span class="material-symbols-outlined text-xs">wifi</span>
+<span class="font-mono">LOW LATENCY</span>
+</div>
+</div>
+<!-- Spacer for center alignment if needed -->
+<div class="hidden md:block"></div>
+<!-- Emergency Stop -->
+<div class="flex justify-center md:justify-end w-full">
+<button class="group relative flex items-center justify-center gap-3 bg-red-500/10 hover:bg-red-600 text-red-500 hover:text-white border border-red-500/50 hover:border-red-600 px-8 py-4 rounded-xl w-full md:w-auto transition-all duration-300">
+<div class="bg-red-500 text-white rounded-full p-1 group-hover:bg-white group-hover:text-red-600 transition-colors">
+<span class="material-symbols-outlined text-xl block">pan_tool</span>
+</div>
+<div class="flex flex-col items-start">
+<span class="text-sm font-bold uppercase leading-none tracking-wider">Pain Threshold</span>
+<span class="text-lg font-black uppercase leading-none">Emergency Stop</span>
+</div>
+<!-- Hover glow effect -->
+<div class="absolute inset-0 rounded-xl bg-red-600/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</button>
+</div>
+</div>
+</main>
+</body></html>
