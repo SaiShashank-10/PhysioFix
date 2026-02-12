@@ -471,7 +471,9 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 <div align="center">
 
 **Built with ❤️ for accessible healthcare**
+<br>
 **Made With Lots of Coffee ☕**
+
 ⭐ **Star this repo** if you found it useful!
 
 </div>
